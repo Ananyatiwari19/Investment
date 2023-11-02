@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mutual Funds</title>
+  <!-- Link to Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <!-- Link to your custom CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="mutualFunds.css">
+</head>
+<body>
+    <h1 class="heading">Mutual Funds</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-3 mb-lg-5">
+                <div class="position-relative card table-nowrap table-card">
+                   
+                    <div class="table-responsive">
+                        <table class="table mb-0" id="transactHistory">
+                            <thead class="small text-uppercase bg-body text-muted">
+                                <tr>
+                                    <th>S. No.</th>
+                                    <th>Asset ID</th>
+                                    <th>Asset Name</th>
+                                    <th>Quantity Owned</th>
+                                    <th>Average Price</th>
+                                    <th id='quantityOwned'>Buy</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <script>
+                        function getStockQuantity(event){
+                            let assetId = event.target.id;
+                            const quantityOwned = prompt('Enter the quantity of mutual funds you wish to buy: ');
+                            console.log(quantityOwned);
+                        }
+                        function getData(){
+                            console.log("funaction started");
+                            let tableContent="";
+                            let arr=[{"sNo": "1",
+                            "assetID":"425261",
+                            "assetName" : "JP Morgan",
+                            "quantityOwned" : 19,
+                            "averagePrice" : 1000,
+                            },
+
+                            {"sNo": "1",
+                            "assetID":"726661",
+                            "assetName" : "JP Morgan",
+                            "quantityOwned" : 19,
+                            "averagePrice" : 1000, 
+                            },
+
+                            {"sNo": "1",
+                            "assetID":"785261",
+                            "assetName" : "JP Morgan",
+                            "quantityOwned" : 19,
+                            "averagePrice" : 1000,
+                            }]
+
+
+
+                            for(let i=0;i<arr.length;i++){
+                                
+                                tableContent += "<tr class='align-middle'><td>" + (i+1) + "</td>"
+                                    + "<td>" + arr[i]["assetID"] + "</td>" 
+                                    + "<td>" + arr[i]["assetName"] + "</td>"
+                                    + "<td>" + arr[i]["quantityOwned"] + "</td>"
+                                    + "<td>" + arr[i]["averagePrice"] + "</td>"
+                                    + "<td><button id="+ arr[i]['assetID']+ " onclick='getStockQuantity(event)'>Buy</button></td>"
+                                    + "</td></tr>";
+                                   
+                            }
+                            document.getElementById("transactHistory").insertAdjacentHTML('beforeend',tableContent);
+                            
+             //Function to enter the quantity
+                            
+                          
+        //     document.getElementById("arr[i]['assetID']").addEventListener('click', function() {
+        //    const quantityField = document.getElementById('quantityOwned');
+        //     const quantityOwned = prompt('Enter the quantity of mutual funds you wish to buy: ');
+        //     if (quantityOwned) {
+        //         quantityField.value = quantityOwned;
+        //     }
+            
+        //     if (typeof quantityOwned === 'undefined') {
+        //             console.log("Variable is Undefined");
+        //     }
+        //     else {
+        //             console.log("Variable is defined and" + " value is " + quantityOwned);
+        //     }
+        // });
+    
+    }
+
+    getData();
+    
+    </script>
+            
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
